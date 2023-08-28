@@ -1,4 +1,4 @@
-from flask import render_template  # Importe render_template
+from flask import render_template  # Importando render_template
 from app import app
 
 # aplicando alguns teste de leitura de arquivos .css .html .js
