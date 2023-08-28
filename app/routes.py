@@ -1,8 +1,12 @@
+from flask import render_template  # Importe render_template
 from app import app
 
+# aplicando alguns teste de leitura de arquivos .css .html .js
 @app.route('/')
 def index():
-    return "<h1>Controle de empréstimo de chaves</h1>"
+    titulo = 'Bem-vindo ao controle de empréstimo de chaves'
+    mensagem = 'Este é um sistema de controle de empréstimo de chaves!'
+    return render_template('index.html', titulo=titulo, mensagem=mensagem)
 
 @app.route('/about')
 def sobre():
