@@ -1,6 +1,5 @@
 from flask import render_template  # Importando render_template
-from app import app
-
+from app import app  # Importando a variável app do pacote app
 # aplicando alguns teste de leitura de arquivos .css .html .js
 @app.route('/')
 def index():
