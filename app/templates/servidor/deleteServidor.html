@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% block content %}
+ <form method="post" action="{{ url_for('servidor.deletar_servidor') }}">
+   <label for="id">ID:</label>
+   <input type="number" id="id" name="id">
+   <input type="submit" value="Deletar">
+ </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!-- templates/create.html -->
+{% extends "index.html" %}
+{% block content %}
+  <h1>Chaves</h1>
+  <ul>
+  {% for chave in chaves %}
+      <li>{{ chave.id }} - {{ chave.nome }} - {{ chave.situacao }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

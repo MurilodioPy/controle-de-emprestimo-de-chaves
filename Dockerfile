@@ -14,7 +14,7 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port on which your Flask app will run
 EXPOSE 5000
@@ -23,4 +23,5 @@ EXPOSE 5000
 COPY . .
 
 # Start the Flask application
-CMD ["flask", "run"]
+CMD ["flask", "run", "--host=0.0.0.0"]
+

@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+{% block content %}
+  <h1>Servidores</h1>
+  <ul>
+  {% for servidor in servidores %}
+      <li>{{ servidor.id }} - {{ servidor.nome }} - {{ servidor.cpf }} - {{ servidor.contato }} - {{ servidor.nascimento }} - {{ servidor.status }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

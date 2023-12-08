@@ -5,4 +5,19 @@
     list-style: none;
     border: 0;
     box-sizing: border-box;
+    background-color: black;
+    color: white;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  .grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
   }

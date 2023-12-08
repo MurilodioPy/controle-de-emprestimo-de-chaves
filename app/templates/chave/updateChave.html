@@ -1,0 +1,13 @@
+<!-- templates/update.html -->
+{% extends "index.html" %}
+{% block content %}
+ <form method="post" action="{{ url_for('chave.atualizar_chave') }}">
+   <label for="id">ID:</label>
+   <input type="text" id="id" name="id">
+   <label for="nome">Nome:</label>
+   <input type="text" id="nome" name="nome">
+   <label for="situacao">Situação:</label>
+   <input type="text" id="situacao" name="situacao">
+   <input type="submit" value="Atualizar">
+ </form>
+{% endblock %}

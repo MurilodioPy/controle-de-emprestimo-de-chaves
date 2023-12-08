@@ -9,6 +9,18 @@
 <body>
     <h1>{{ titulo }}</h1>
     <p>{{ mensagem }}</p>
+    <header>
+        <h1>EMPRÉSTIMO DE CHAVES</h1>
+        <nav>
+          <ul>
+            <li><a href="{{ url_for('chave.create_get') }}">CHAVES</a></li>
+            <li><a href="{{ url_for('chave.read_get') }}">SERVIDORES</a></li>
+            <li><a href="{{ url_for('chave.update_get') }}">EMPRESTIMOS</a></li>
+          </ul>
+        </nav>
+      </header>
+      {% block content %}
+      {% endblock %}
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
