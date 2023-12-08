@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+    <h1>SERVIDORES</h1>
+    <nav>
+    <ul>
+        <li><a href="{{ url_for('servidor.create_get') }}">Inserir Servidor</a></li>
+        <li><a href="{{ url_for('servidor.update_get') }}">Atualizar Servidor</a></li>
+        <li><a href="{{ url_for('servidor.delete_get') }}">Deletar Servidor</a></li>
+        <li><a href="{{ url_for('servidor.mostrar_servidores') }}">Mostrar Servidor</a></li>
+    </ul>
+    </nav>
+{% endblock %}

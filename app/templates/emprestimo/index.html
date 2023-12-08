@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+    <h1>EMPRESTIMOS</h1>
+    <nav>
+    <ul>
+        <li><a href="{{ url_for('emprestimo.create_get') }}">Fazer empréstimo</a></li>
+        <li><a href="{{ url_for('emprestimo.update_get') }}">Atualizar Empréstimo</a></li>
+        <li><a href="{{ url_for('emprestimo.delete_get') }}">Deletar Empréstimo</a></li>
+        <li><a href="{{ url_for('emprestimo.mostrar_emprestimos') }}">Mostrar Empréstimos</a></li>
+    </ul>
+    </nav>
+{% endblock %}

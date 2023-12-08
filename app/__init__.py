@@ -1,7 +1,9 @@
 from flask import Flask
 from . database import db
 from app.views.chave import chave_bp
-# from app.views.servidor import servidor_bp
+from app.views.servidor import servidor_bp
+from app.views.emprestimo import emprestimo_bp
+from app.views.aplicativo import aplicativo_bp
 
 def create_app():
     app = Flask(__name__)
@@ -20,7 +22,9 @@ def create_app():
         finally:
             print("db.create_all() in __init__.py was successful")
     
-    app.register_blueprint(chave_bp, url_prefix='/')
-    # app.register_blueprint(servidor_bp, url_prefix='/servidor')
+    app.register_blueprint(aplicativo_bp, url_prefix='/')
+    app.register_blueprint(chave_bp, url_prefix='/chave')
+    app.register_blueprint(servidor_bp, url_prefix='/servidor')
+    app.register_blueprint(emprestimo_bp, url_prefix='/emprestimo')
 
     return app

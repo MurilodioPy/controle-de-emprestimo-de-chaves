@@ -1,13 +1,12 @@
-{% extends "chave/index.html" %}
+{% extends "index.html" %}
 {% block content %}
-    <h1>EMPRÉSTIMO DE CHAVES</h1>
+    <h1>CHAVES</h1>
     <nav>
     <ul>
         <li><a href="{{ url_for('chave.create_get') }}">Criar Chave</a></li>
-        <li><a href="{{ url_for('chave.read_get') }}">Ler Chave</a></li>
         <li><a href="{{ url_for('chave.update_get') }}">Atualizar Chave</a></li>
         <li><a href="{{ url_for('chave.delete_get') }}">Deletar Chave</a></li>
-        <li><a href="{{ url_for('chave.mostrarChaves') }}">Mostrar Chaves</a></li>
+        <li><a href="{{ url_for('chave.mostrar_chaves') }}">Mostrar Chaves</a></li>
     </ul>
     </nav>
 {% endblock %}

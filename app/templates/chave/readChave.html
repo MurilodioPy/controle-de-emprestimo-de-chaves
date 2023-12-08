@@ -1,9 +1,0 @@
-<!-- templates/read.html -->
-{% extends "index.html" %}
-{% block content %}
- <form method="get" action="{{ url_for('chave.read_get') }}">
-   <label for="id">ID:</label>
-   <input type="text" id="id" name="id">
-   <input type="submit" value="Ler">
- </form>
-{% endblock %}
