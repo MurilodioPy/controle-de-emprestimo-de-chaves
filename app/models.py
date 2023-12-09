@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime 
 from . database import db
 class Chave(db.Model):
    __tablename__ = 'chaves'
@@ -14,14 +14,14 @@ class Servidor(db.Model):
    cpf = db.Column(db.String(255), unique=True, nullable=False)
    contato = db.Column(db.String(255))
    nascimento = db.Column(db.DateTime)
-   status = db.Column(db.String(255), default='ativo')
+   status = db.Column(db.String(255), default='Sem Pendencia')
 
 class Emprestimo(db.Model):
    __tablename__ = 'emprestimos'
    id = db.Column(db.Integer, primary_key=True)
-   datahora_emprestimo = db.Column(db.DateTime, default=db.func.now())
-   datahora_devolucao = db.Column(db.DateTime)
-   status = db.Column(db.String(255), default='pendente')
-   chave_id = db.Column(db.Integer, db.ForeignKey('chave.id'))
-   servidor_retirou_id = db.Column(db.Integer, db.ForeignKey('servidor.id'))
-   servidor_devolveu_id = db.Column(db.Integer, db.ForeignKey('servidor.id'))
+   datahora_emprestimo = db.Column(db.DateTime, default=datetime.utcnow())
+   datahora_devolucao = db.Column(db.DateTime, default=datetime.utcnow())
+   status = db.Column(db.String(255), default='Ativo')
+   chave_id = db.Column(db.Integer, db.ForeignKey('chaves.id'))
+   servidor_retirou_id = db.Column(db.Integer, db.ForeignKey('servidores.id'))
+   servidor_devolveu_id = db.Column(db.Integer, db.ForeignKey('servidores.id'), nullable=True)

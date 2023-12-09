@@ -1,3 +1,6 @@
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,800");
 * {
     padding: 0;
     margin: 0;
@@ -5,19 +8,81 @@
     list-style: none;
     border: 0;
     box-sizing: border-box;
-    background-color: black;
+    background-color: #222;
     color: white;
   }
-  
-  .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 10px;
-    padding: 10px;
-  }
-  .grid-item {
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 14px;
+
+  body {
     text-align: center;
-  }
+    align-items: center;
+    font-family: "Montserrat", Helvetica, sans-serif;
+    background-color: #222;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+nav > ul > li {
+  text-align: left;
+  padding: 3px;
+  text-transform: uppercase;
+}
+
+a{
+  text-decoration: none;
+  background-color: #740a11;
+}
+
+.navegador{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.itens_nav{
+  padding: 10px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+h1 {
+    color: #740a11;
+    padding-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #740a11;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="%23fff"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>');
+    background-position: right 10px top 50%;
+    background-repeat: no-repeat;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #740a11;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"] :hover {
+    background-color: #5b080e;
+}

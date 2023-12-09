@@ -4,9 +4,10 @@
     <nav>
     <ul>
         <li><a href="{{ url_for('emprestimo.create_get') }}">Fazer empréstimo</a></li>
-        <li><a href="{{ url_for('emprestimo.update_get') }}">Atualizar Empréstimo</a></li>
+        <li><a href="{{ url_for('emprestimo.create_devolucao_get') }}">Fazer Devolução</a></li>
         <li><a href="{{ url_for('emprestimo.delete_get') }}">Deletar Empréstimo</a></li>
-        <li><a href="{{ url_for('emprestimo.mostrar_emprestimos') }}">Mostrar Empréstimos</a></li>
+        <li><a href="{{ url_for('emprestimo.mostrar_emprestimos_ativos') }}">Mostrar Empréstimos Ativos</a></li>
+        <li><a href="{{ url_for('emprestimo.mostrar_emprestimos_inativos') }}">Mostrar Empréstimos Inativos</a></li>
     </ul>
     </nav>
 {% endblock %}

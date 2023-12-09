@@ -1,15 +1,16 @@
 {% extends "index.html" %} {% block content %}
-<h1>Criar Empréstimo</h1>
-<form method="post" action="{{ url_for('emprestimo.inserir_emprestimo') }}">
+<h1>Devolver Chaves</h1>
+<form method="post" action="{{ url_for('emprestimo.devolver_emprestimo') }}">
+
   <label for="chave_id">Chave ID:</label>
   <select id="chave_id" name="chave_id" required>
-    {% for chave in chaves_disponiveis %}
+    {% for chave in chaves_indisponiveis %}
       <option value="{{ chave.id }}">{{ chave.nome }}</option>
     {% endfor %}
   </select>
 
-  <label for="servidor_retirou_id">Servidor Retirou ID:</label>
-  <select id="servidor_retirou_id" name="servidor_retirou_id" required>
+  <label for="servidor_devolveu_id">Servidor Devolveu ID:</label>
+  <select id="servidor_devolveu_id" name="servidor_devolveu_id" required>
     {% for servidor in servidores %}
       <option value="{{ servidor.id }}">{{ servidor.nome }}</option>
     {% endfor %}

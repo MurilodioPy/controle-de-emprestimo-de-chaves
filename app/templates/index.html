@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
     <title>Controle de empréstimo de chaves</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>{{ titulo }}</h1>
     <p>{{ mensagem }}</p>
     <header>
-        <h1>APLICATIVO DE EMPRÉSTIMO DE CHAVES</h1>
-        <nav>
-          <ul>
-            <li><a href="{{ url_for('chave.index') }}">CHAVES</a></li>
-            <li><a href="{{ url_for('servidor.index') }}">SERVIDORES</a></li>
-            <li><a href="{{ url_for('emprestimo.index') }}">EMPRESTIMOS</a></li>
-          </ul>
-        </nav>
-      </header>
+      <h1>APLICATIVO DE EMPRÉSTIMO DE CHAVES</h1>
+      <nav>
+        <ul class="navegador">
+          <li class="itens_nav">
+            <a href="{{ url_for('chave.index') }}">CHAVES</a>
+          </li>
+          <li class="itens_nav">
+            <a href="{{ url_for('servidor.index') }}">SERVIDORES</a>
+          </li>
+          <li class="itens_nav">
+            <a href="{{ url_for('emprestimo.index') }}">EMPRESTIMOS</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class = "container">
       {% block content %}
-      {% endblock %}
+      {% endblock %}</div>
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
+  </body>
 </html>

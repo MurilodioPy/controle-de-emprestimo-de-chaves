@@ -1,9 +1,13 @@
 <!-- templates/delete.html -->
-{% extends "index.html" %}
-{% block content %}
- <form method="post" action="{{ url_for('chave.deletar_chave') }}">
-   <label for="id">ID:</label>
-   <input type="number" id="id" name="id">
-   <input type="submit" value="Deletar">
- </form>
+{% extends "index.html" %} {% block content %}
+<h1>Deletar chave</h1>
+<form method="post" action="{{ url_for('chave.deletar_chave') }}">
+  <label for="id">ID:</label>
+  <select id="id" name="id" required>
+    {% for chave in chaves %}
+    <option value="{{ chave.id }}">{{ chave.nome }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Deletar" />
+</form>
 {% endblock %}

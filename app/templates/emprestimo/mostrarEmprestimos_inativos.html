@@ -1,8 +1,8 @@
 {% extends "index.html" %}
 {% block content %}
-    <h1>Empréstimos</h1>
+    <h1>Empréstimos Inativos</h1>
     <ul>
-    {% for emprestimo in emprestimos %}
+    {% for emprestimo in emprestimos_inativos %}
         <li>
             ID: {{ emprestimo.id }}<br>
             Data e Hora do Empréstimo: {{ emprestimo.datahora_emprestimo }}<br>

@@ -1,18 +1,27 @@
-{% extends "index.html" %}
-{% block content %}
-  <form method="post" action="{{ url_for('servidor.atualizar_servidor') }}">
-    <label for="id">ID:</label>
-    <input type="text" id="id" name="id">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome">
-    <label for="cpf">CPF:</label>
-    <input type="text" id="cpf" name="cpf">
-    <label for="contato">Contato:</label>
-    <input type="text" id="contato" name="contato">
-    <label for="nascimento">Nascimento:</label>
-    <input type="text" id="nascimento" name="nascimento">
-    <label for="status">Status:</label>
-    <input type="text" id="status" name="status">
-    <input type="submit" value="Atualizar">
-  </form>
+{% extends "index.html" %} {% block content %}
+<h1>Atualizar Servidor</h1>
+<form method="post" action="{{ url_for('servidor.atualizar_servidor') }}">
+  <label for="id">ID:</label>
+  <select id="id" name="id" required>
+    {% for servidor in servidores %}
+    <option value="{{ servidor.id }}">{{ servidor.id }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" name="nome" />
+  <label for="cpf">CPF:</label>
+  <input type="text" id="cpf" name="cpf" />
+  <label for="contato">Contato:</label>
+  <input type="text" id="contato" name="contato" />
+  <label for="nascimento">Nascimento:</label>
+  <input
+    type="date"
+    id="nascimento"
+    name="nascimento"
+    pattern="\d{4}-\d{2}-\d{2}"
+    required
+  />
+  <input type="submit" value="Atualizar" />
+</form>
 {% endblock %}

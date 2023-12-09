@@ -1,13 +1,16 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from sqlalchemy.exc import IntegrityError, OperationalError
 from datetime import datetime
 from ..models import Servidor
 from ..database import db
+
 
 servidor_bp = Blueprint('servidor', __name__, template_folder='templates')
 
 @servidor_bp.route('/')
 def index():
-    return render_template('servidor/index.html')
+    servidores = Servidor.query.all()
+    return render_template('servidor/index.html', servidores=servidores)
 
 @servidor_bp.route('/create', methods=['GET'])
 def create_get():
@@ -15,19 +18,15 @@ def create_get():
 
 @servidor_bp.route('/update', methods=['GET'])
 def update_get():
-    return render_template('servidor/updateServidor.html')
+    servidores = Servidor.query.all()
+    return render_template('servidor/updateServidor.html', servidores=servidores)
 
 @servidor_bp.route('/delete', methods=['GET'])
 def delete_get():
-    return render_template('servidor/deleteServidor.html')
-
-# Rota para ler todas as chaves
-@servidor_bp.route('/read', methods=['GET'])
-def mostrar_servidores():
     servidores = Servidor.query.all()
-    return render_template('servidor/mostrarServidores.html', servidores=servidores)
+    return render_template('servidor/deleteServidor.html', servidores=servidores)
 
-# Rota para inserir uma nova chave
+# Rota para inserir um novo servidor
 @servidor_bp.route('/createRequest', methods=['POST'])
 def inserir_servidor():
     nome = request.form.get('nome')
@@ -37,11 +36,30 @@ def inserir_servidor():
     nascimento = datetime.strptime(nascimento_str, '%Y-%m-%d').strftime('%Y-%m-%d')
     status = request.form.get("status")
     
-    novo_servidor = Servidor(nome=nome, cpf=cpf, contato=contato, nascimento=nascimento, status=status)
-    db.session.add(novo_servidor)
-    db.session.commit()
+    try:
+            # Criar um novo objeto Servidor e adicioná-lo ao banco de dados
+            novo_servidor = Servidor(
+                nome=nome,
+                cpf=cpf,
+                contato=contato,
+                nascimento=nascimento,
+                status=status
+            )
 
-    return redirect(url_for('servidor.mostrar_servidores'))
+            db.session.add(novo_servidor)
+            db.session.commit()
+
+    except OperationalError as e:
+        # Trate o erro de formato de data incorreto aqui
+        print(f"Erro de formato de data: {e}")
+        return render_template('error/erro_cpf.html')
+
+    except IntegrityError as e:
+        # Trate a violação de integridade (CPF duplicado) aqui
+        print(f"Erro de integridade: {e}")
+        return render_template('error/erro_data.html')  # Substitua pelo seu template de erro
+
+    return redirect(url_for('servidor.index'))
 
 # Rota para deletar uma chave
 @servidor_bp.route('/deleteRequest', methods=['POST'])
@@ -50,10 +68,11 @@ def deletar_servidor():
     if id_servidor:
         servidor = Servidor.query.get(id_servidor)
         if servidor:
-            db.session.delete(servidor)
-            db.session.commit()
+            if servidor.status == "Sem Pendencia":
+                db.session.delete(servidor)
+                db.session.commit()
 
-    return redirect(url_for('servidor.mostrar_servidores'))
+    return redirect(url_for('servidor.index'))
 
 # Rota para atualizar uma chave
 @servidor_bp.route('/updateRequest', methods=['POST'])
@@ -72,5 +91,15 @@ def atualizar_servidor():
                 servidor.nascimento = datetime.strptime(nascimento, '%Y-%m-%d').strftime('%Y-%m-%d')
             if status := request.form.get('status'):
                 servidor.status = status
-            db.session.commit()
-    return redirect(url_for('servidor.mostrar_servidores'))
+        try:        
+                db.session.commit()
+        except OperationalError as e:
+        # Trate o erro de formato de data incorreto aqui
+            print(f"Erro de formato de data: {e}")
+            return render_template('error/erro_cpf.html')
+
+        except IntegrityError as e:
+        # Trate a violação de integridade (CPF duplicado) aqui
+            print(f"Erro de integridade: {e}")
+            return render_template('error/erro_data.html')
+    return redirect(url_for('servidor.index'))
