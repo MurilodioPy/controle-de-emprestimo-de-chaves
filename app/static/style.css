@@ -49,6 +49,12 @@ a{
     margin: 50px auto;
 }
 
+.mostrarItens{
+  padding-top: 20px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
 h1 {
     color: #740a11;
     padding-bottom: 20px;

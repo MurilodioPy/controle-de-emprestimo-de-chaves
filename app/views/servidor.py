@@ -33,7 +33,7 @@ def inserir_servidor():
     cpf = request.form.get('cpf')
     contato = request.form.get('contato')
     nascimento_str = request.form.get('nascimento')
-    nascimento = datetime.strptime(nascimento_str, '%Y-%m-%d').strftime('%Y-%m-%d')
+    nascimento = datetime.strptime(nascimento_str, '%Y-%m-%d').strftime('%d-%m-%Y')
     status = request.form.get("status")
     
     try:

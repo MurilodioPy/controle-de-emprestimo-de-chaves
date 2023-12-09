@@ -11,7 +11,7 @@ def create_app():
     @app.errorhandler(404)
     def not_found(error):
         return render_template('error/404.html'), 404
-
+    
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://pjflask:Pjflask1@localhost/pjflask?unix_socket=/var/run/mysqld/mysqld.sock'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ECHO'] = True

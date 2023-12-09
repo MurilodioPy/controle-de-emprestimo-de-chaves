@@ -8,10 +8,11 @@
         <li><a href="{{ url_for('chave.delete_get') }}">Deletar Chave</a></li>
     </ul>
     </nav>
-    <ul>
-
-    {% for chave in chaves %}
-        <li>{{ chave.id }} - {{ chave.nome }} - {{ chave.status }}</li>
-    {% endfor %}
-    </ul>
+    <div class="mostrarItens">
+        <ul>
+            {% for chave in chaves %}
+                <li>{{ chave.id }} - {{ chave.nome }} - {{ chave.status }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
