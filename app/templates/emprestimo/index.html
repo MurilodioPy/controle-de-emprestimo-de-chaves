@@ -6,8 +6,23 @@
         <li><a href="{{ url_for('emprestimo.create_get') }}">Fazer empréstimo</a></li>
         <li><a href="{{ url_for('emprestimo.create_devolucao_get') }}">Fazer Devolução</a></li>
         <li><a href="{{ url_for('emprestimo.delete_get') }}">Deletar Empréstimo</a></li>
-        <li><a href="{{ url_for('emprestimo.mostrar_emprestimos_ativos') }}">Mostrar Empréstimos Ativos</a></li>
         <li><a href="{{ url_for('emprestimo.mostrar_emprestimos_inativos') }}">Mostrar Empréstimos Inativos</a></li>
     </ul>
     </nav>
+
+    <div class="mostrarItens">
+        <ul>
+            {% for emprestimo in emprestimos_ativos %}
+                <li>
+                    ID: {{ emprestimo.id }}<br>
+                    Data e Hora do Empréstimo: {{ emprestimo.datahora_emprestimo }}<br>
+                    Data e Hora da Devolução: {{ emprestimo.datahora_devolucao }}<br>
+                    Status: {{ emprestimo.status }}<br>
+                    Chave ID: {{ emprestimo.chave_id }}<br>
+                    Servidor que Retirou ID: {{ emprestimo.servidor_retirou_id }}<br>
+                    Servidor que Devolveu ID: {{ emprestimo.servidor_devolveu_id }}<br>
+                </li>
+            {% endfor %}
+            </ul>
+    </div>
 {% endblock %}

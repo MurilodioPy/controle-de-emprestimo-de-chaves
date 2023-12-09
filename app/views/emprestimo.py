@@ -8,7 +8,8 @@ emprestimo_bp = Blueprint('emprestimo', __name__, template_folder='templates')
 
 @emprestimo_bp.route('/')
 def index():
-    return render_template('emprestimo/index.html')
+    emprestimos_ativos = Emprestimo.query.filter_by(status='Ativo').all()
+    return render_template('emprestimo/index.html', emprestimos_ativos=emprestimos_ativos)
 
 @emprestimo_bp.route('/emprestimo', methods=['GET'])
 def create_get():
@@ -34,7 +35,6 @@ def inserir_emprestimo():
         chave_id = request.form.get('chave_id')
         if status_chave(chave_id):
             servidor_retirou_id = request.form.get('servidor_retirou_id')
-            # Criar um novo objeto Emprestimo e adicioná-lo ao banco de dados
             
             if servidor_retirou_id:
                 servidor = Servidor.query.get(servidor_retirou_id)
@@ -52,7 +52,7 @@ def inserir_emprestimo():
 
             db.session.add(novo_emprestimo)
             db.session.commit()
-        return redirect(url_for('emprestimo.mostrar_emprestimos_ativos'))
+        return redirect(url_for('emprestimo.index'))
         
 
 @emprestimo_bp.route('/devolverRequest', methods=['POST'])
@@ -62,7 +62,7 @@ def devolver_emprestimo():
         chave_id = request.form.get('chave_id')
         if chave_id:
             try:
-                emprestimo = Emprestimo.query.filter_by(chave_id=chave_id).first()
+                emprestimo = Emprestimo.query.filter_by(chave_id=chave_id, status="Ativo").first()
                 if emprestimo:
                     emprestimo.datahora_devolucao = datetime.utcnow()
                     emprestimo.status = "Inativo"
@@ -72,15 +72,15 @@ def devolver_emprestimo():
                         if servidor:
                             servidor.status = "Sem Pendencia"
                 
-                if servidor_devolveu_id := request.form.get('servidor_devolveu_id'):
-                    emprestimo.servidor_devolveu_id = servidor_devolveu_id
+                servidor_devolveu_id = request.form.get('servidor_devolveu_id')
+                emprestimo.servidor_devolveu_id = servidor_devolveu_id
 
                 atualizar_status_chave(chave_id)
                 db.session.commit()
             except Exception as e:
                 print(f"Erro ao inserir no banco de dados: {e}")
                 db.session.rollback()
-        return redirect(url_for('emprestimo.mostrar_emprestimos_ativos'))
+        return redirect(url_for('emprestimo.index'))
         
         
 @emprestimo_bp.route('/deleteRequest', methods=['POST'])
@@ -98,11 +98,6 @@ def deletar_emprestimo():
                 db.session.commit()
 
     return redirect(url_for('emprestimo.mostrar_emprestimos_inativos'))
-
-@emprestimo_bp.route('/readAtivos', methods=['GET'])
-def mostrar_emprestimos_ativos():
-    emprestimos_ativos = Emprestimo.query.filter_by(status='Ativo').all()
-    return render_template('emprestimo/mostrarEmprestimos_ativos.html', emprestimos_ativos=emprestimos_ativos)
 
 
 @emprestimo_bp.route('/readInativos', methods=['GET'])

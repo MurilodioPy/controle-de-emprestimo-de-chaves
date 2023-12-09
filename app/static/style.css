@@ -55,6 +55,10 @@ a{
   text-transform: uppercase;
 }
 
+.mostrarItens > ul > li{
+  padding: 5px;
+}
+
 h1 {
     color: #740a11;
     padding-bottom: 20px;

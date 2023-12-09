@@ -1,17 +1,19 @@
 {% extends "index.html" %}
 {% block content %}
     <h1>Empréstimos Inativos</h1>
-    <ul>
-    {% for emprestimo in emprestimos_inativos %}
-        <li>
-            ID: {{ emprestimo.id }}<br>
-            Data e Hora do Empréstimo: {{ emprestimo.datahora_emprestimo }}<br>
-            Data e Hora da Devolução: {{ emprestimo.datahora_devolucao }}<br>
-            Status: {{ emprestimo.status }}<br>
-            Chave ID: {{ emprestimo.chave_id }}<br>
-            Servidor que Retirou ID: {{ emprestimo.servidor_retirou_id }}<br>
-            Servidor que Devolveu ID: {{ emprestimo.servidor_devolveu_id }}<br>
-        </li>
-    {% endfor %}
-    </ul>
+    <div class="mostrarItens">
+        <ul>
+        {% for emprestimo in emprestimos_inativos %}
+            <li>
+                ID: {{ emprestimo.id }}<br>
+                Data e Hora do Empréstimo: {{ emprestimo.datahora_emprestimo }}<br>
+                Data e Hora da Devolução: {{ emprestimo.datahora_devolucao }}<br>
+                Status: {{ emprestimo.status }}<br>
+                Chave ID: {{ emprestimo.chave_id }}<br>
+                Servidor que Retirou ID: {{ emprestimo.servidor_retirou_id }}<br>
+                Servidor que Devolveu ID: {{ emprestimo.servidor_devolveu_id }}<br>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
