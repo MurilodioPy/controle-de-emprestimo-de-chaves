@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os
 from . database import db
 from app.views.chave import chave_bp
 from app.views.servidor import servidor_bp
@@ -15,6 +16,10 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://pjflask:Pjflask1@localhost/pjflask?unix_socket=/var/run/mysqld/mysqld.sock'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ECHO'] = True
+    app.secret_key = ''
+    app.secret_key = os.urandom(24)
+    app.secret_key = os.environ.get('SECRET_KEY', 'dev')
+
     
     db.init_app(app)
 

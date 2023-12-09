@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from ..models import Emprestimo, Chave, Servidor
 from ..database import db
 from .chave import atualizar_status_chave, status_chave
@@ -52,6 +52,7 @@ def inserir_emprestimo():
 
             db.session.add(novo_emprestimo)
             db.session.commit()
+        flash("Empréstimo feito com sucesso!")
         return redirect(url_for('emprestimo.index'))
         
 
@@ -80,6 +81,7 @@ def devolver_emprestimo():
             except Exception as e:
                 print(f"Erro ao inserir no banco de dados: {e}")
                 db.session.rollback()
+        flash("Chave devolvida com sucesso!")
         return redirect(url_for('emprestimo.index'))
         
         
@@ -96,7 +98,7 @@ def deletar_emprestimo():
                 # Deletar o empréstimo do banco de dados
                 db.session.delete(emprestimo)
                 db.session.commit()
-
+    flash("Empréstimo deletado com sucesso!")
     return redirect(url_for('emprestimo.mostrar_emprestimos_inativos'))
 
 

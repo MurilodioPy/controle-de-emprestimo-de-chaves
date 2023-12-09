@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from sqlalchemy.exc import IntegrityError, OperationalError
 from datetime import datetime
 from ..models import Servidor
@@ -58,7 +58,7 @@ def inserir_servidor():
         # Trate a violação de integridade (CPF duplicado) aqui
         print(f"Erro de integridade: {e}")
         return render_template('error/erro_data.html')  # Substitua pelo seu template de erro
-
+    flash("Servidor inserido com sucesso!")
     return redirect(url_for('servidor.index'))
 
 # Rota para deletar uma chave
@@ -71,7 +71,7 @@ def deletar_servidor():
             if servidor.status == "Sem Pendencia":
                 db.session.delete(servidor)
                 db.session.commit()
-
+    flash("Servidor removido com sucesso!")
     return redirect(url_for('servidor.index'))
 
 # Rota para atualizar uma chave
@@ -102,4 +102,5 @@ def atualizar_servidor():
         # Trate a violação de integridade (CPF duplicado) aqui
             print(f"Erro de integridade: {e}")
             return render_template('error/erro_data.html')
+    flash("Servidor atualizado com sucesso!")
     return redirect(url_for('servidor.index'))

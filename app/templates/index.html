@@ -14,8 +14,9 @@
     <h1>{{ titulo }}</h1>
     <p>{{ mensagem }}</p>
     <header>
-      <h1>APLICATIVO DE EMPRÉSTIMO DE CHAVES</h1>
-      <nav>
+      <h1>CONTROLE DE EMPRÉSTIMO DE CHAVES</h1>
+      <nav class="nav-bar">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" width="90px">
         <ul class="navegador">
           <li class="itens_nav">
             <a href="{{ url_for('chave.index') }}">CHAVES</a>
@@ -31,8 +32,24 @@
     </header>
     <div class = "container">
       {% block content %}
-      {% endblock %}</div>
-
+      {% endblock %}
+    </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <div id="flash-message">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% endwith %}
+     </div>
   </body>
+
+  <footer class="footer-pag">
+    <p>Projeto desenvolvido com Pyhton/Flask:</p>
+    <img src="{{ url_for('static', filename='flask.svg') }}" alt="flask" width="150px">
+  </footer>
 </html>

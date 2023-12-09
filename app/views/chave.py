@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from ..models import Chave
 from ..database import db
 
@@ -32,6 +32,7 @@ def inserir_chave():
         nova_chave = Chave(nome=nome, situacao=situacao)
         db.session.add(nova_chave)
         db.session.commit()
+    flash("Chave inserida com sucesso")
     return redirect(url_for('chave.index'))
 
 # Rota para deletar uma chave
@@ -43,6 +44,7 @@ def deletar_chave():
         if chave:
             db.session.delete(chave)
             db.session.commit()
+    flash("Chave deletada com sucesso")
     return redirect(url_for('chave.index'))
 
 # Rota para atualizar uma chave
@@ -57,6 +59,7 @@ def atualizar_chave():
             if situacao := request.form.get('situacao'):
                 chave.situacao = situacao
             db.session.commit()
+    flash("Chave deletada com sucesso")
     return redirect(url_for('chave.index'))
 
 

@@ -1,25 +1,33 @@
-
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Catamaran:400,800");
-* {
-    padding: 0;
-    margin: 0;
-    vertical-align: baseline;
-    list-style: none;
-    border: 0;
-    box-sizing: border-box;
-    background-color: #222;
-    color: white;
-  }
 
-  body {
-    text-align: center;
-    align-items: center;
-    font-family: "Montserrat", Helvetica, sans-serif;
-    background-color: #222;
-    color: #fff;
-    margin: 0;
-    padding: 0;
+:root {
+  --cor-primaria: #52a35f;
+  --cor-secundaria: #ff4f5a;
+  --cor-tercearia: #333;
+  --cor-fundo: #222;
+  --cor-texto: #fff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+  box-sizing: border-box;
+  background-color: #222;
+  color: var(--cor-texto);
+}
+
+body {
+  text-align: center;
+  align-items: center;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  margin: 0;
+  padding: 0;
 }
 
 nav > ul > li {
@@ -28,71 +36,109 @@ nav > ul > li {
   text-transform: uppercase;
 }
 
-a{
+a {
   text-decoration: none;
-  background-color: #740a11;
+  background-color: var(--cor-primaria);
 }
 
-.navegador{
+.nav-bar {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.itens_nav{
+.navegador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.itens_nav {
   padding: 10px;
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
+  max-width: 800px;
+  margin: 50px auto;
 }
 
-.mostrarItens{
+.mostrarItens {
   padding-top: 20px;
   text-align: left;
   text-transform: uppercase;
 }
 
-.mostrarItens > ul > li{
+.mostrarItens > ul > li {
   padding: 5px;
 }
 
 h1 {
-    color: #740a11;
-    padding-bottom: 20px;
+  color: var(--cor-secundaria);
+  padding-bottom: 20px;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    border: 1px solid #740a11;
-    border-radius: 5px;
-    background-color: #222;
-    color: #fff;
+.titulo_pagina {
+  text-align: left;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid var(--cor-secundaria);
+  border-radius: 5px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
 select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="%23fff"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>');
-    background-position: right 10px top 50%;
-    background-repeat: no-repeat;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="%23fff"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>');
+  background-position: right 10px top 50%;
+  background-repeat: no-repeat;
 }
 
 input[type="submit"] {
-    padding: 10px;
-    background-color: #740a11;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 input[type="submit"] :hover {
-    background-color: #5b080e;
+  background-color: var(--cor-secundaria);
+}
+
+.footer-pag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#flash-message {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.flashes li {
+  background: var(--cor-tercearia);
+  color: var(--cor-primaria);
+  padding: 10px;
+  margin: 10px;
 }
