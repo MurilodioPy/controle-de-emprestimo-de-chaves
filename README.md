@@ -1,4 +1,4 @@
-# Projeto Flask - Resumo
+# Projeto Flask - Controle de empréstimo de chaves
 
 ## Estrutura do Projeto
 
