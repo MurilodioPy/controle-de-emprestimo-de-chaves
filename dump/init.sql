@@ -1,29 +1,25 @@
--- Criação do usuário 'pjflask' com senha 'Pjflask1' e concede todos os privilégios
-CREATE USER 'pjflask'@'localhost' IDENTIFIED BY 'Pjflask1';
-GRANT ALL PRIVILEGES ON *.* TO 'pjflask'@'localhost';
-FLUSH PRIVILEGES;
-
-CREATE database pjflask;
 
 USE pjflask;
 
-CREATE TABLE chaves (
+CREATE TABLE IF NOT EXISTS chaves (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     situacao VARCHAR(255) NOT NULL,
     status VARCHAR(255) DEFAULT 'Disponivel'
 );
 
-CREATE TABLE servidores (
+CREATE TABLE IF NOT EXISTS servidores (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     cpf VARCHAR(255) UNIQUE NOT NULL,
     contato VARCHAR(255),
-    nascimento TIMESTAMP,
+    nascimento DATE,
     status VARCHAR(255) DEFAULT 'Sem Pendencia'
 );
 
-CREATE TABLE emprestimos (
+-- ALTER TABLE servidores MODIFY COLUMN nascimento DATE;
+
+CREATE TABLE IF NOT EXISTS emprestimos (
     id SERIAL PRIMARY KEY,
     datahora_emprestimo TIMESTAMP DEFAULT NOW(),
     datahora_devolucao TIMESTAMP,

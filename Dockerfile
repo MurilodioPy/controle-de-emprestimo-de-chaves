@@ -20,7 +20,7 @@ COPY ./run.py .
 COPY ./app /app
 
 # Copie o script de inicialização para o diretório do docker-entrypoint-initdb.d/
-COPY ./init.sql /docker-entrypoint-initdb.d/init.sql
+ADD ./dump/init.sql /docker-entrypoint-initdb.d
 
 # Expose the port on which your Flask app will run
 EXPOSE 8080
