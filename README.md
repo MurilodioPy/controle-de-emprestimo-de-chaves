@@ -1,5 +1,30 @@
 # Projeto Flask - Controle de empréstimo de chaves
 
+## Para executar o aplicação 
+## Dentro do linux ou WSL
+git clone --branch dockertest https://github.com/MurilodioPy/controle-de-emprestimo-de-chaves.git
+
+## Dentro da pasta do projeto
+### Instale o docker
+
+sudo apt update
+
+sudo pip install docker
+
+sudo apt install docker-ce docker-ce-cli containerd.io
+
+## Inicie o docker
+
+sudo service docker start
+
+## Inicie a aplicalação
+
+sudo docker compose up --build
+
+## Abra o browser 
+
+localhost:8080
+
 ## Estrutura do Projeto
 
 - `app/`: Pasta principal do aplicativo
