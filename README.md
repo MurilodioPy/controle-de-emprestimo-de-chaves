@@ -1,4 +1,4 @@
-# Projeto Flask - Controle de empréstimo de chaves grupo 5
+# Projeto Flask - Controle de empréstimo de chaves
 
 ## Passo a passo para executar o aplicação 
 ## Dentro do LINUX ou WSL
