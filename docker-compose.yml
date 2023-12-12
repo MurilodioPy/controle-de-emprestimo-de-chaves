@@ -2,6 +2,7 @@ version: '3'
 services:
 # Serviço Flask
   flask:
+    container_name: flask
     build: .
     ports: ['8080:8080']
     volumes: ['.:/app']
