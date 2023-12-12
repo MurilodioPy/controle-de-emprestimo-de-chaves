@@ -17,8 +17,6 @@ CREATE TABLE IF NOT EXISTS servidores (
     status VARCHAR(255) DEFAULT 'Sem Pendencia'
 );
 
--- ALTER TABLE servidores MODIFY COLUMN nascimento DATE;
-
 CREATE TABLE IF NOT EXISTS emprestimos (
     id SERIAL PRIMARY KEY,
     datahora_emprestimo TIMESTAMP DEFAULT NOW(),
