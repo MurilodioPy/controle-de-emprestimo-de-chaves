@@ -4,7 +4,7 @@
   <label for="id">ID do Empréstimo:</label>
   <select id="id" name="id" required>
     {% for emprestimo in emprestimos_inativos %}
-    <option value="{{ emprestimo.id }}">{{ emprestimo.id }}</option>
+    <option value="{{ emprestimo.id }}">{{ emprestimo.datahora_devolucao }}</option>
     {% endfor %}
   </select>
   <input type="submit" value="Deletar" />

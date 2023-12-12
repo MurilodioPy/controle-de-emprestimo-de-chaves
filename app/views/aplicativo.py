@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, url_for
-from ..models import Servidor
-from ..database import db
+from flask import Blueprint, render_template
+
 
 aplicativo_bp = Blueprint('aplicativo', __name__, template_folder='templates')
 

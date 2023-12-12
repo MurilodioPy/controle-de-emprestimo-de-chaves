@@ -8,7 +8,7 @@
     {% endfor %}
   </select>
 
-  <label for="servidor_retirou_id">Servidor Retirou ID:</label>
+  <label for="servidor_retirou_id">Servidor:</label>
   <select id="servidor_retirou_id" name="servidor_retirou_id" required>
     {% for servidor in servidores %}
       <option value="{{ servidor.id }}">{{ servidor.nome }}</option>

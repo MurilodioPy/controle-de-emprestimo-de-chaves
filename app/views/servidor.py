@@ -81,26 +81,27 @@ def atualizar_servidor():
     if id:
         servidor = Servidor.query.get(id)
         if servidor:
-            if nome := request.form.get('nome'):
-                servidor.nome = nome
-            if cpf := request.form.get('cpf'):
-                servidor.cpf = cpf
-            if contato := request.form.get('contato'):
-                servidor.contato = contato
-            if nascimento := request.form.get('nascimento'):
-                servidor.nascimento = datetime.strptime(nascimento, '%Y-%m-%d').date()
-            if status := request.form.get('status'):
-                servidor.status = status
-        try:        
-                db.session.commit()
-        except OperationalError as e:
-        # Trate o erro de formato de data incorreto aqui
-            print(f"Erro de formato de data: {e}")
-            return render_template('error/erro_cpf.html')
-
-        except IntegrityError as e:
-        # Trate a violação de integridade (CPF duplicado) aqui
-            print(f"Erro de integridade: {e}")
-            return render_template('error/erro_data.html')
-    flash("Servidor atualizado com sucesso!")
+            if servidor.status == "Sem Pendencia":
+                if nome := request.form.get('nome'):
+                    servidor.nome = nome
+                if cpf := request.form.get('cpf'):
+                    servidor.cpf = cpf
+                if contato := request.form.get('contato'):
+                    servidor.contato = contato
+                if nascimento := request.form.get('nascimento'):
+                    servidor.nascimento = datetime.strptime(nascimento, '%Y-%m-%d').date()
+                try:        
+                        db.session.commit()
+                except OperationalError as e:
+                # Trate o erro de formato de data incorreto aqui
+                    print(f"Erro de formato de data: {e}")
+                    return render_template('error/erro_cpf.html')
+                
+                except IntegrityError as e:
+                # Trate a violação de integridade (CPF duplicado) aqui
+                    print(f"Erro de integridade: {e}")
+                    return render_template('error/erro_data.html')
+                flash("Servidor atualizado com sucesso!")
+            else:
+                flash("Servidor com pendência!")
     return redirect(url_for('servidor.index'))

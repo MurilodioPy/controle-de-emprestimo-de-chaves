@@ -16,7 +16,7 @@
     <header>
       <h1>CONTROLE DE EMPRÉSTIMO DE CHAVES</h1>
       <nav class="nav-bar">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" width="90px">
+        <a href="{{ url_for('aplicativo.index') }}" > <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" width="90px"></a>
         <ul class="navegador">
           <li class="itens_nav">
             <a href="{{ url_for('chave.index') }}">CHAVES</a>
@@ -32,7 +32,11 @@
     </header>
     <div class = "container">
       {% block content %}
+        
       {% endblock %}
+      <div class="container-img">
+        <img src="{{ url_for('static', filename='tecnologias.png') }}" alt="flask" width="500px">
+      </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <div id="flash-message">
@@ -47,9 +51,15 @@
       {% endwith %}
      </div>
   </body>
-
+<a href="http://" target="_blank" rel="noopener noreferrer"></a>
   <footer class="footer-pag">
-    <p>Projeto desenvolvido com Pyhton/Flask:</p>
-    <img src="{{ url_for('static', filename='flask.svg') }}" alt="flask" width="150px">
+    <a href="https://github.com/MurilodioPy/controle-de-emprestimo-de-chaves" target="_blank"><img class="footer-pag-item" src="{{ url_for('static', filename='gitgithub.png') }}" alt="flask" width="100px"></a>
+    <div class="footer-pag-item">
+      <div>
+        <p>Projeto desenvolvido </p> 
+        <p>com Pyhton/Flask-MySQL:</p>
+      </div>
+      <img src="{{ url_for('static', filename='flask.svg') }}" alt="flask" width="100px">
+    </div>
   </footer>
 </html>
