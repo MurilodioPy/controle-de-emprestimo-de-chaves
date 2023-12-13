@@ -9,7 +9,7 @@
     {% endfor %}
   </select>
 
-  <label for="servidor_devolveu_id">Servidor Devolveu ID:</label>
+  <label for="servidor_devolveu_id">Servidor:</label>
   <select id="servidor_devolveu_id" name="servidor_devolveu_id" required>
     {% for servidor in servidores %}
       <option value="{{ servidor.id }}">{{ servidor.nome }}</option>

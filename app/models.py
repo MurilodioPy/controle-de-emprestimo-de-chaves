@@ -1,5 +1,7 @@
 from datetime import datetime, date
 from . database import db
+from sqlalchemy import Date
+
 class Chave(db.Model):
    __tablename__ = 'chaves'
    id = db.Column(db.Integer, primary_key=True)
@@ -13,7 +15,7 @@ class Servidor(db.Model):
    nome = db.Column(db.String(255), nullable=False)
    cpf = db.Column(db.String(255), unique=True, nullable=False)
    contato = db.Column(db.String(255))
-   nascimento = db.Column(db.Integer)
+   nascimento = db.Column(Date)
    status = db.Column(db.String(255), default='Sem Pendencia')
 
 class Emprestimo(db.Model):

@@ -1,4 +1,4 @@
 manager/
 venv/
 env/
-config.py
+app/mysql_data/*

@@ -4,7 +4,7 @@
   <label for="id">ID:</label>
   <select id="id" name="id" required>
     {% for servidor in servidores %}
-    <option value="{{ servidor.id }}">{{ servidor.id }}</option>
+    <option value="{{ servidor.id }}">{{ servidor.nome }}</option>
     {% endfor %}
   </select>
 

@@ -1,0 +1,47 @@
+version: '3'
+services:
+# Serviço Flask
+  flask:
+    container_name: flask
+    build: .
+    ports: ['8080:8080']
+    volumes: ['.:/app']
+    restart: always
+    environment:
+      FLASK_APP: run
+      FLASK_ENV: DEVELOPMENT
+      FLASK_RUN_HOST: localhost
+      SQLALCHEMY_DATABASE_URI: 'mysql://pjflask:Pjflask1@mysql:3306/pjflask'
+      SQLALCHEMY_TRACK_MODIFICATIONS: "False"  
+      SQLALCHEMY_ECHO: "True"
+    depends_on:
+      - mysql 
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  mysql:
+      container_name: database
+      image: mysql
+      restart: always
+      environment:
+        MYSQL_DATABASE: pjflask
+        MYSQL_USER: pjflask
+        MYSQL_PASSWORD: Pjflask1
+        MYSQL_ROOT_PASSWORD: Pjflask1
+      ports:
+        - "3306:3306"
+      expose:
+        - '3606'
+      volumes:
+        - ./dump:/docker-entrypoint-initdb.d
+        - ./app/mysql_data:/var/lib/mysql
+volumes: 
+  mysql_data:
+  
+    
+  
+
+  

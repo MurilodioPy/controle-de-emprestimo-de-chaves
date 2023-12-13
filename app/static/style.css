@@ -36,9 +36,11 @@ nav > ul > li {
   text-transform: uppercase;
 }
 
-a {
+nav > ul > li > a {
   text-decoration: none;
   background-color: var(--cor-primaria);
+  padding: 2px;
+  border-radius: 3px;
 }
 
 .nav-bar {
@@ -62,6 +64,14 @@ a {
 .container {
   max-width: 800px;
   margin: 50px auto;
+  text-align: left;
+  border: #52a35f solid 1px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.container-img{
+  text-align: center;
 }
 
 .mostrarItens {
@@ -93,6 +103,7 @@ select {
   border-radius: 5px;
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
+  text-transform: uppercase;
 }
 
 select {
@@ -122,9 +133,24 @@ input[type="submit"] :hover {
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 0;
+  left: 0;
   right: 0;
+  bottom: 0;
   z-index: 1000;
+}
+
+.footer-projeto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.footer-pag-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 15px;
 }
 
 #flash-message {
