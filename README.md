@@ -24,7 +24,7 @@ sudo apt install docker-ce docker-ce-cli containerd.io
 ```
 sudo service docker start
 ```
-## Inicie a aplicalação
+## Inicie a aplicação
 ```
 sudo docker compose up --build 
 ```
